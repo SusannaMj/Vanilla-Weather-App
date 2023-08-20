@@ -1,0 +1,65 @@
+.weather-app {
+  max-width: 700px;
+  margin: 50px auto;
+  border: solid 1px;
+  border-radius: 10px;
+  padding: 50px;
+}
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+small {
+  display: block;
+  text-align: center;
+}
+
+.col-4 {
+  text-align: center;
+}
+.specificationsToday {
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 20px 10px 20px 10px;
+  box-shadow: 0 2px 5px;
+  margin-top: 30px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.city-details {
+  margin-top: 20px;
+}
+.current-temperature {
+  font-size: 70px;
+  line-height: 20px;
+  position: relative;
+  bottom: -21px;
+}
+.unit {
+  position: relative;
+  top: -9px;
+  left: 5px;
+  font-size: 25px;
+  font-weight: normal;
+}
+h1 {
+  position: relative;
+  left: 80px;
+}
+.description {
+  position: relative;
+  top: 10px;
+  left: 5px;
+}
+.description-name {
+  position: relative;
+  top: 12px;
+}

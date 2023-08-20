@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Waether App</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,73 +15,82 @@
   </head>
   <body>
     <div class="container">
-      <form>
-        <div class="row">
-          <div class="col-6">
-            <input
-              type="city"
-              class="form-control"
-              id="inputCity"
-              placeholder="City..."
-            />
-          </div>
-          <div class="col-6">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </div>
-        </div>
-      </form>
-      <br />
-      <div class="row">
-        <div class="col-5">
-          <h2>Gold Coast</h2>
-          <ul>
-            <li>Sunday 20th August 10:32</li>
-          </ul>
-        </div>
-        <div class="col-3">
-          <h1>17°C/F</h1>
-        </div>
-        <div class="col-4">
-          <ul>
-            <li>☀</li>
-            <li>sunny</li>
-          </ul>
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col-4">
-          <ul>
-            <li>☂</li>
-            <li>20%</li>
-            <li>humidity</li>
-          </ul>
-        </div>
-        <div class="col-4">
-          <ul>
-            <li>🌫</li>
-            <li>10 km/h</li>
-            <li>wind</li>
-          </ul>
-        </div>
-        <div class="col-4">
-          <ul>
-            <li>😎</li>
-            <li>4</li>
-            <li>UV index</li>
-          </ul>
-        </div>
-      </div>
+      <div class="wrapper">
+        <div class="weather-app">
+          <form>
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="city"
+                  class="form-control"
+                  id="inputCity"
+                  placeholder="City..."
+                />
+              </div>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+            </div>
+          </form>
+          <br />
+          <div class="row city-details">
+            <div class="col-5">
+              <h2>Gold Coast</h2>
+              <ul>
+                <li>Sunday 20th August 10:32</li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <h1>
+                <span class="current-temperature">17</span
+                ><span class="unit">°C/F</span>
+              </h1>
+            </div>
 
-      <div>
-        <small>
-          <a
-            href="https://github.com/SusannaMj/Vanilla-Weather-App"
-            target="_blank"
-            >Open-source code</a
+            <div class="col-4">
+              <ul class="description">
+                <li class="description-icon">☀</li>
+                <li class="description-name">sunny</li>
+              </ul>
+            </div>
+          </div>
+          <br />
+          <div class="specificationsToday">
+            <div class="row">
+              <div class="col-4">
+                <ul>
+                  <li>☂</li>
+                  <li>20%</li>
+                  <li>humidity</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li>🌫</li>
+                  <li>10 km/h</li>
+                  <li>wind</li>
+                </ul>
+              </div>
+              <div class="col-4">
+                <ul>
+                  <li>😎</li>
+                  <li>4</li>
+                  <li>UV index</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <small>
+            <a
+              href="https://github.com/SusannaMj/Vanilla-Weather-App"
+              target="_blank"
+              >Open-source code</a
+            >
+            by Susanna Mjetk</small
           >
-          by Susanna Mjetk</small
-        >
+        </div>
       </div>
       <script src="src/app.js"></script>
     </div>
