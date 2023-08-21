@@ -14,7 +14,9 @@ ul {
   padding: 0;
   margin: 0;
 }
-
+li::first-letter {
+  text-transform: capitalize;
+}
 small {
   display: block;
   text-align: center;
