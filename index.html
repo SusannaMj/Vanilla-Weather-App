@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/app.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -35,14 +36,14 @@
           <br />
           <div class="row city-details">
             <div class="col-5">
-              <h2>Gold Coast</h2>
+              <h2 id="city">Gold Coast</h2>
               <ul>
                 <li>Sunday 20th August 10:32</li>
               </ul>
             </div>
             <div class="col-3">
               <h1>
-                <span class="current-temperature">17</span
+                <span class="current-temperature" id="temperature">17</span
                 ><span class="unit">°C/F</span>
               </h1>
             </div>
@@ -50,7 +51,7 @@
             <div class="col-4">
               <ul class="description">
                 <li class="description-icon">☀</li>
-                <li class="description-name">sunny</li>
+                <li class="description-name" id="description">sunny</li>
               </ul>
             </div>
           </div>
@@ -60,22 +61,22 @@
               <div class="col-4">
                 <ul>
                   <li>☂</li>
-                  <li>20%</li>
+                  <li><span id="humidity"></span>%</li>
                   <li>humidity</li>
                 </ul>
               </div>
               <div class="col-4">
                 <ul>
                   <li>🌫</li>
-                  <li>10 km/h</li>
+                  <li><span id="wind-speed"></span> km/h</li>
                   <li>wind</li>
                 </ul>
               </div>
               <div class="col-4">
                 <ul>
-                  <li>😎</li>
-                  <li>4</li>
-                  <li>UV index</li>
+                  <li>🎈</li>
+                  <li><span id="pressure"></span> hPa</li>
+                  <li>Pressure</li>
                 </ul>
               </div>
             </div>
