@@ -18,9 +18,9 @@
     <div class="container">
       <div class="wrapper">
         <div class="weather-app">
-          <form>
+          <form id="search-form">
             <div class="row">
-              <div class="col-6">
+              <div class="col-9">
                 <input
                   type="city"
                   class="form-control"
@@ -28,8 +28,14 @@
                   placeholder="City..."
                 />
               </div>
-              <div class="col-6">
-                <button type="submit" class="btn btn-primary">Search</button>
+              <div class="col-3">
+                <button
+                  type="submit"
+                  value="search"
+                  class="btn btn-primary w-100"
+                >
+                  Search
+                </button>
               </div>
             </div>
           </form>
