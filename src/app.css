@@ -59,10 +59,15 @@ h1 {
 }
 .description {
   position: relative;
-  top: 10px;
+  top: -19px;
   left: 5px;
 }
 .description-name {
   position: relative;
-  top: 12px;
+  top: 5px;
+}
+
+.active {
+  color: black;
+  cursor: default;
 }
