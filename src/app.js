@@ -32,7 +32,7 @@ if (hour < 10) {
 }
 let minutes = now.getMinutes();
 if (minutes < 10) {
-  minutes = `0${hours}`;
+  minutes = `0${minutes}`;
 }
 
 let currentLocationDate = document.querySelector("#date");
@@ -77,6 +77,49 @@ function formatDate(timestamp) {
 
   return `${day} ${currentDate}th ${month} ${hours}:${minutes}`;
 }
+function displayCurrentLocationForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.daily;
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+              <div class="col-2">
+                <div class="forecast-day">${formatForecastDay(
+                  forecastDay.dt
+                )}</div>
+                <img
+                  src="https://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
+                  alt="#"
+                  width="80px"
+                />
+                <div class="forecast-temperature">
+                  <span class="forecast-maximum-temperature">${Math.round(
+                    forecastDay.temp.max
+                  )}°C</span>/
+                  <span class="forecast-minimum-temperature">${Math.round(
+                    forecastDay.temp.min
+                  )}°C</span>
+                </div>
+              </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+function getCurrentLocationForecast(coordinates) {
+  let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayCurrentLocationForecast);
+}
 
 function showCurrentLocationTemperature(response) {
   console.log(response.data);
@@ -97,6 +140,7 @@ function showCurrentLocationTemperature(response) {
     "src",
     ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getCurrentLocationForecast(response.data.coord);
 }
 
 function showCurrentLocationData(position) {
@@ -120,7 +164,6 @@ function formatForecastDay(timestamp) {
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecast = response.data.daily;
-  console.log(response.data.daily);
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
