@@ -38,6 +38,38 @@ function formatDate(timestamp) {
   return `${day} ${currentDate}th ${month} ${hours}:${minutes}`;
 }
 
+function showCurrentLocationTemperature(response) {
+  console.log(response.data);
+  let temperature = document.querySelector("#temperature");
+  let currentLocation = document.querySelector("#city");
+  let currentCondition = document.querySelector("#description");
+  let currentLocationHumidity = document.querySelector("#humidity");
+  let currentLoctionWind = document.querySelector("#wind-speed");
+  let currentLocationPressure = document.querySelector("#pressure");
+  let currentLocationIcon = document.querySelector("#weather-icon");
+  temperature.innerHTML = Math.round(response.data.main.temp);
+  currentLocation.innerHTML = response.data.name;
+  currentCondition.innerHTML = response.data.weather[0].description;
+  currentLocationHumidity.innerHTML = response.data.main.humidity;
+  currentLoctionWind.innerHTML = Math.round(response.data.wind.speed);
+  currentLocationPressure.innerHTML = response.data.main.pressure;
+  currentLocationIcon.setAttribute(
+    "src",
+    ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}
+
+function showCurrentLocationData(position) {
+  let longitude = position.coords.longitude;
+  let latitude = position.coords.latitude;
+  let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showCurrentLocationTemperature);
+}
+
+navigator.geolocation.getCurrentPosition(showCurrentLocationData);
+
 function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -69,10 +101,10 @@ function displayForecast(response) {
                 <div class="forecast-temperature">
                   <span class="forecast-maximum-temperature">${Math.round(
                     forecastDay.temp.max
-                  )}°</span>/
+                  )}°C</span>/
                   <span class="forecast-minimum-temperature">${Math.round(
                     forecastDay.temp.min
-                  )}°</span>
+                  )}°C</span>
                 </div>
               </div>`;
     }
