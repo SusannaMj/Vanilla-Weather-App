@@ -206,6 +206,50 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatSearchedLocationDate(timezone, sunrise) {
+  console.log(timezone);
+  console.log(sunrise);
+  let now = new Date((sunrise + timezone) * 1000);
+  let date = now.getDate();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let month = months[now.getMonth()];
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let currentLocationDate = document.querySelector("#date");
+  currentLocationDate.innerHTML = `${day} ${date}th ${month} ${hour}:${minutes}`;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -231,6 +275,7 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
+  formatSearchedLocationDate(response.data.timezone, response.data.sys.sunrise);
 }
 function search(city) {
   let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
