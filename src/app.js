@@ -28,7 +28,7 @@ let months = [
 let month = months[now.getMonth()];
 let hour = now.getHours();
 if (hour < 10) {
-  hour = `0${hours}`;
+  hour = `0${hour}`;
 }
 let minutes = now.getMinutes();
 if (minutes < 10) {
@@ -121,6 +121,46 @@ function getCurrentLocationForecast(coordinates) {
   axios.get(apiUrl).then(displayCurrentLocationForecast);
 }
 
+function displayBackground(description) {
+  console.log(description);
+  let backgroundVideo = document.querySelector("video");
+  if (description === "Rain") {
+    backgroundVideo.setAttribute("src", "src/videos/rain.mp4");
+  } else if (description === "Drizzle") {
+    backgroundVideo.setAttribute("src", "src/videos/rain.mp4");
+  } else if (description === "Thunderstorm") {
+    backgroundVideo.setAttribute("src", "src/videos/thunder.mp4");
+  } else if (description === "Clear") {
+    backgroundVideo.setAttribute("src", "src/videos/sunny.mp4");
+  } else if (description === "Clouds") {
+    backgroundVideo.setAttribute("src", "src/videos/sunny-and-cloudy.mp4");
+  } else if (description === "Snow") {
+    backgroundVideo.setAttribute("src", "src/videos/snow.mp4");
+  } else {
+    backgroundVideo.setAttribute("src", "src/videos/sunny.mp4");
+  }
+}
+
+function displayCurrentBackground(description) {
+  console.log(description);
+  console.log(description === "Clouds");
+  let backgroundVideo = document.querySelector("video");
+  if (description === "Rain") {
+    backgroundVideo.setAttribute("src", "src/videos/rain.mp4");
+  } else if (description === "Drizzle") {
+    backgroundVideo.setAttribute("src", "src/videos/rain.mp4");
+  } else if (description === "Thunderstorm") {
+    backgroundVideo.setAttribute("src", "src/videos/thunder.mp4");
+  } else if (description === "Clear") {
+    backgroundVideo.setAttribute("src", "src/videos/sunny.mp4");
+  } else if (description === "Clouds") {
+    backgroundVideo.setAttribute("src", "src/videos/sunny-and-cloudy.mp4");
+  } else if (description === "Snow") {
+    backgroundVideo.setAttribute("src", "src/videos/snow.mp4");
+  } else {
+    backgroundVideo.setAttribute("src", "src/videos/sunny.mp4");
+  }
+}
 function showCurrentLocationTemperature(response) {
   console.log(response.data);
   let temperature = document.querySelector("#temperature");
@@ -141,6 +181,7 @@ function showCurrentLocationTemperature(response) {
     ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   getCurrentLocationForecast(response.data.coord);
+  displayCurrentBackground(response.data.weather[0].main);
 }
 
 function showCurrentLocationData(position) {
@@ -276,6 +317,7 @@ function displayTemperature(response) {
 
   getForecast(response.data.coord);
   formatSearchedLocationDate(response.data.timezone, response.data.sys.sunrise);
+  displayBackground(response.data.weather[0].main);
 }
 function search(city) {
   let apiKey = "8cac06f7ab6c10287cd06a316ff84a57";
